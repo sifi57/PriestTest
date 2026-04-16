@@ -47,9 +47,9 @@ export default function App() {
         const testResult = await evaluateTest(answers);
         setResult(testResult);
         setStep('result');
-      } catch (err) {
+      } catch (err: any) {
         console.error(err);
-        setError("连接高维意识失败，请重试。");
+        setError(err.message || "连接高维意识失败，请重试。");
         setStep('test');
       }
     }

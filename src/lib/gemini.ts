@@ -1,7 +1,5 @@
 import { GoogleGenAI, Type } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-
 export type TestResult = {
   characterName: string;
   biography: string;
@@ -9,6 +7,12 @@ export type TestResult = {
 };
 
 export async function evaluateTest(answers: Record<number, string[]>): Promise<TestResult> {
+  if (!process.env.GEMINI_API_KEY) {
+    throw new Error("未配置 Gemini API Key。如果您在 GitHub Pages 上运行，请确保已在仓库的 Secrets 中添加了 GEMINI_API_KEY。");
+  }
+
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+
   const prompt = `
 你是一个精通Priest小说人物心理学和性格分析的专家。
 用户刚刚完成了一份包含15道题的性格测试。请根据用户的回答，从以下42个人物中，匹配最符合用户性格底色的一位：
