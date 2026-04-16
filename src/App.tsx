@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { questions } from './data/questions';
-import { evaluateTest, TestResult } from './lib/gemini';
+import { evaluateTestLocal, TestResult } from './lib/localEvaluator';
 import { Loader2, ArrowRight, ArrowLeft, RefreshCcw, Sparkles } from 'lucide-react';
 
 export default function App() {
@@ -44,7 +44,7 @@ export default function App() {
     } else {
       setStep('loading');
       try {
-        const testResult = await evaluateTest(answers);
+        const testResult = await evaluateTestLocal(answers);
         setResult(testResult);
         setStep('result');
       } catch (err: any) {
