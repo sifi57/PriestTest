@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "STKaiti", "Kaiti SC", "Georgia", serif;
+  --font-sans: "SimSun", "STSong", "Songti SC", serif;
+  --font-song: "SimSun", "STSong", "Songti SC", serif;
+  --color-bg: #FDFCF8;
+  --color-ink: #1A1A1A;
+  --color-accent: #9B815E;
+  --color-muted: #E5E2D9;
+  --color-text-secondary: #555555;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.serif-text {
+  font-family: var(--font-serif);
+}
+
+.song-text {
+  font-family: var(--font-song);
+}
+
+.minimal-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-muted);
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--color-accent);
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--color-muted);
+}
+
+.analysis-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-muted);
+  padding: 20px;
+}
+
+.btn {
+  padding: 10px 25px;
+  border: 1px solid var(--color-ink);
+  background: transparent;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-ink);
+}
+
+.btn:hover {
+  opacity: 0.8;
+  background: rgba(0,0,0,0.03);
+}
+
+.btn-primary {
+  background: var(--color-ink);
+  color: #FFFFFF;
+}
+
+.btn-primary:hover {
+  background: #000000;
+  opacity: 0.9;
+}
+
+.btn-primary:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.option-btn {
+  transition: all 0.3s ease;
+  background: transparent;
+  border: 1px solid var(--color-muted);
+  color: var(--color-ink);
+}
+
+.option-btn:hover {
+  background: #F8F6F0;
+  border-color: var(--color-accent);
+}
+
+.option-btn.selected {
+  background: #F8F6F0;
+  border-color: var(--color-accent);
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
