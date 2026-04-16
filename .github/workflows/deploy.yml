@@ -40,9 +40,6 @@ jobs:
         
       - name: Build
         run: npx vite build --base="${{ steps.pages.outputs.base_path }}/"
-        env:
-          # 从 GitHub Secrets 中读取 Gemini API Key 并注入到环境变量中
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
