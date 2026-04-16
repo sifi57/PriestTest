@@ -34,14 +34,15 @@ jobs:
       - name: Install dependencies
         run: npm install
         
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v4
+        
       - name: Build
-        run: npm run build
+        run: npx vite build --base="${{ steps.pages.outputs.base_path }}/"
         env:
           # 从 GitHub Secrets 中读取 Gemini API Key 并注入到环境变量中
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
